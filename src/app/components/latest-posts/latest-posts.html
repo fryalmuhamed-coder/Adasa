@@ -1,0 +1,76 @@
+<section class="latest-section py-5 position-relative overflow-hidden" dir="rtl">
+  <div class="bg-shade"></div>
+
+  <div class="container py-4 position-relative">
+    
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-end  mb-5 gap-3">
+      <div class="text-end">
+       <div class="section-label d-inline-flex align-items-center gap-2 mb-4 animate-fade-in">
+             <span class="dot-container">
+            <span class="dot-fade"></span>
+          </span> 
+           <span class="dot-container">
+             <span class="dot-ping"></span> <!--   no2ta  ma7tota ta7t  el dot  -->
+            <span class="dot-inner"></span>
+          </span>
+
+          <span class=" text-adasa">  الاحدث</span>
+         
+        </div>
+        <h2 class="section-title text-white mt-2">أحدث المقالات</h2>
+        <p class="section-subtitle">محتوى جديد طازج من المطبعة</p>
+      </div>
+         <div class="ms-auto ms-md-0 "> <a routerLink="/blog" class="btn-all group">
+        عرض جميع المقالات 
+        <i class="fa-solid fa-arrow-left ms-2"></i>
+      </a>
+</div>
+    </div>
+
+   
+    <div class="row g-4">
+      @for (post of latestPosts; track post.id) {
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="article-card-v2 h-100">
+            <a [routerLink]="['/blog', post.id]" class="text-decoration-none h-100 d-flex flex-column">
+              
+              <div class="card-img-wrapper">
+                <img [src]="post.image" class="card-img" [alt]="post.title">
+                <div class="img-overlay"></div>
+                <span class="category-badge">{{ post.category }}</span>
+              </div>
+
+              <div class="card-body-v2 p-4 ">
+
+                <div class="d-flex align-items-start   gap-2  text-time  mb-3 justify-content-start flex-row-reverse">
+                  <span>{{ post.date }}</span>
+                      <span class="dot-separator"> .</span>
+                      <span class="d-flex align-items-center gap-1">
+                    <i class="fa-regular fa-clock"></i> {{ post.readTime }}
+                  </span>
+                </div>
+<div class="text-end"> 
+      <h3 class="card-title-v2 text-white mb-3">{{ post.title }}</h3>
+                <p class="card-desc-v2 text-secondary mb-4">{{ post.excerpt }}</p>
+
+                <div class="card-footer-v2 pt-3 d-flex align-items-center justify-content-between">
+                  <div class="author-info-v2 d-flex align-items-center gap-2 flex-row-reverse">
+                    <img [src]="post.author.avatar" class="author-avatar-sm" [alt]="post.author.name">
+                    <div class="text-end">
+                      <p class="author-name-sm mb-0 text-white">{{ post.author.name }}</p>
+                      <p class="author-role-sm mb-0">كاتب محتوى</p>
+                    </div>
+                  </div>
+                  
+                  <div class="arrow-circle">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </div>
+                </div></div>
+              </div>
+            </a>
+          </article>
+        </div>
+      }
+    </div>
+  </div>
+</section>

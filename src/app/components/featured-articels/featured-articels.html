@@ -1,0 +1,79 @@
+<section class="featured-section py-5">
+  <div class="container py-4">
+    <div
+      class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-end mb-5 gap-3">
+      <div class="text-end">
+        <span class="section-label gap-2 mb-3">
+          <span class="dot-container">
+            <span class="dot-fade"></span>
+          </span>
+          <span class="dot-container">
+            <span class="dot-ping"></span>
+            <span class="dot-main"></span>
+          </span>
+          <span class="text-adasa"> مميز</span>
+        </span>
+        <h2 class="section-title text-white mt-2">مقالات مختارة</h2>
+        <p class="section-subtitle">محتوى منتقى لبدء رحلة تعلمك</p>
+      </div>
+      <a routerLink="/blog" class="btn btn-view-all">
+        عرض الكل <i class="fa-solid fa-arrow-left ms-2"></i>
+      </a>
+    </div>
+
+    <div class="articles-stack">
+      @for (post of FeaturedArticels; track post.id) {
+        <article class="article-card mb-4 col-12">
+          <a [routerLink]="['/blog', post.id]" class="card-link text-decoration-none">
+            <div class="row g-0 overflow-hidden card-container">
+              <div class="col-md-6 position-relative overflow-hidden img-wrapper">
+                <img [src]="post.image" class="article-img" [alt]="post.title" />
+                <div class="img-overlay"></div>
+                <span class="badge-featured">مميز</span>
+              </div>
+
+              <div
+                class="col-md-6 p-4 p-md-5 d-flex flex-column justify-content-center text-end content-wrapper"
+              >
+                <div class="d-flex align-items-center gap-3 mb-3 justify-content-start">
+                  <span class="category-tag">{{ post.category }}</span>
+                  <span class="time">
+                    <i class="fa-regular fa-clock ms-1"></i> {{ post.readTime }}
+                  </span>
+                </div>
+
+                <h3 class="article-heading mb-3 text-white">{{ post.title }}</h3>
+                <p class="article-text-desc mb-4 text-secondary small">{{ post.excerpt }}</p>
+
+                <div class="d-flex align-items-center justify-content-between mt-auto">
+                  <div class="author-box d-flex align-items-center gap-3 flex-row-reverse">
+                    <div class="author-info text-end">
+                      <p class="author-name mb-0 text-white small fw-bold">
+                        {{ post.author.name }}
+                      </p>
+                      <p class="article-date-text mb-0">{{ post.date }}</p>
+                    </div>
+                    <div class="author-img-container">
+                      <img
+                        [src]="post.author.avatar"
+                        class="author-img"
+                        [alt]="post.author.name"
+                        width="40"
+                        height="40"
+                      />
+                      <span class="author-status"></span>
+                    </div>
+                  </div>
+
+                  <span class="read-article-btn">
+                    اقرأ المقال <i class="fa-solid fa-arrow-left ms-1"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </article>
+      }
+    </div>
+  </div>
+</section>

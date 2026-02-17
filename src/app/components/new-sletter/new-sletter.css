@@ -1,0 +1,95 @@
+
+.newsletter-section {  
+  background-color: #0a0a0a; 
+  direction: rtl; 
+  padding:6rem 0 6rem 0 ;
+
+
+}
+
+.top-glow {
+  position: absolute;
+   top: 0;
+    left: 50%;
+     transform: translateX(-50%) ;
+  width: 600px;
+   height: 300px;
+    background: rgba(255, 102, 0, 0.285);
+  border-radius: 50%; 
+  filter: blur(100px);
+  z-index: 1;
+}
+
+.newsletter-card {
+  background: #161616;
+   border: 1px solid #262626;
+    border-radius: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.custom-mail-icon {
+  
+    font-size: 1.75rem; 
+ 
+    color: #fff; 
+   
+    display: inline-block;
+    line-height: 1;
+}  
+.icon-wrapper {
+  width: 64px; 
+  height: 64px;
+   background: linear-gradient(135deg, #f54a00, #ea580c);
+  border-radius: 15px;
+   display: flex;
+    align-items: center;
+   justify-content: center;
+    color: white;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #f97316, #fbbf24);
+  -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+.custom-input {
+  background: #0a0a0a ;
+   border: 1px solid #262626 ;
+  color: white ;
+
+   border-radius: 10px;
+   width: 315px;
+   height: 55px;
+   
+}
+
+.btn-subscribe {
+  background: linear-gradient(to right, #f97316, #ea580c);
+  color: white;
+   border: none;
+   border-radius: 10px;
+   font-weight: 600;
+
+}
+
+.btn-subscribe:hover {
+
+    background: linear-gradient(to right, #ca3500 );
+  }
+
+.mini-avatar {
+  width: 32px;
+   height: 32px;
+    border-radius: 50%;
+  border: 2px solid #161616;
+   margin-right: -10px;
+}
+
+.text-pri{
+  font-size: 14px;
+  line-height: 20px;
+  color:#737373;
+  font-weight: 400;
+}

@@ -1,0 +1,225 @@
+@if (Post) {
+  <article class="detailed-post-wrapper" dir="rtl">
+    <div class="hero-container">
+      <img [src]="Post.image" [alt]="Post.title" class="hero-image" />
+      <div class="hero-overlay-bottom"></div>
+      <div class="hero-overlay-side"></div>
+
+      <div class="top-nav-box d-flex position-absolute justify-content-start">
+        <nav class="glass-breadcrumb align-items-center">
+          <a routerLink="/" class="home-link"><i class="fa-solid fa-home text-pri"></i></a>
+          <i class="fa-solid fa-chevron-left arrow-sep"></i>
+          <a routerLink="/blog" class="blog-link text-pri text-decoration-none">المدونة</a>
+          <i class="fa-solid fa-chevron-left arrow-sep"></i>
+          <span class="text-pri"> بورتريه</span>
+        </nav>
+      </div>
+
+      <div class="hero-info-bottom container">
+        <div class="content-start">
+          <div class="meta-row">
+            <span class="category-pill">{{ Post.category }}</span>
+            <div class="time-info">
+              <span><i class="fa-regular fa-calendar"></i> {{ Post.date }}</span>
+              <span><i class="fa-regular fa-clock"></i> {{ Post.readTime }}</span>
+            </div>
+          </div>
+          <h1 class="post-main-title">{{ Post.title }}</h1>
+
+          <div class="author-glass-card">
+            <img [src]="Post.author.avatar" class="author-avatar" [alt]="Post.author.name" />
+            <div class="author-text">
+              <div class="author-name">{{ Post.author.name }}</div>
+              <div class="author-role">{{ Post.author.role }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content-limit">
+        <div class="row g-5">
+          <div class="container m-3 col-lg-8 order-2 order-lg-1">
+            <div class="p-4 mb-5 rounded-4 order-v2">
+              <p class="p-style opacity-75 mb-0">"{{ Post?.excerpt }}"</p>
+            </div>
+
+            <div class="article-body-content">
+              <div [innerHTML]="formattedContent"></div>
+            </div>
+
+            <div class="tags-section mt-5 p-4 rounded-4 border">
+              <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="tags-icon-wrapper">
+                  <i class="fa-solid fa-tags"></i>
+                </div>
+                <h3 class="h6 mb-0 text-white fw-bold">الوسوم</h3>
+              </div>
+
+              <div class="d-flex flex-wrap gap-2">
+                @for (tag of Post?.tags; track tag) {
+                  <span class="blog-tag">#{{ tag }}</span>
+                }
+              </div>
+            </div>
+            <div class="share-section mt-4 p-4 rounded-4 border">
+              <div class="d-flex align-items-center justify-content-between flex-wrap gap-4">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="share-icon-wrapper">
+                    <i class="fa-solid fa-share-nodes"></i>
+                  </div>
+                  <h3 class="h6 mb-0 text-white fw-bold">شارك المقال</h3>
+                </div>
+
+                <div class="d-flex gap-2">
+                  <button class="share-btn x-twitter" title="Share on X">
+                    <i class="fa-brands fa-x-twitter"></i>
+                  </button>
+                  <button class="share-btn linkedin" title="Share on LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </button>
+                  <button class="share-btn whatsapp" title="Share on WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </button>
+                  <button class="share-btn copy-link" title="Copy Link">
+                    <i class="fa-solid fa-link"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="author-card-premium mt-4 p-4 rounded-4 border">
+              <div
+                class="d-flex flex-column flex-sm-row align-items-center align-items-sm-start gap-4"
+              >
+                <div class="author-img-wrapper">
+                  <img
+                    [src]="Post?.author?.avatar"
+                    [alt]="Post?.author?.name"
+                    class="author-avatar-img shadow-lg"
+                  />
+                </div>
+
+                <div class="text-center text-sm-end flex-grow-1">
+                  <span class="author-badge-label">كاتب المقال</span>
+                  <h3 class="text-white h4 mt-1 fw-bold">{{ Post?.author?.name }}</h3>
+                  <p class="text-secondary small mb-3">{{ Post?.author?.role }}</p>
+                  <p class="small opacity-75 leading-relaxed">
+                    مصور محترف شغوف بمشاركة المعرفة والخبرات في عالم التصوير الفوتوغرافي.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="col-lg-3 order-1 order-lg-2">
+            <div class="sticky-sidebar">
+              <div class="side-card main-border mb-4">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                  <div class="icon-box-orange">
+                    <i class="fa-solid fa-list"></i>
+                  </div>
+                  <h3 class="mb-0 text-p3">محتويات المقال</h3>
+                </div>
+                <nav class="toc-list">
+                  @for (item of tocltems; track item.id; let i = $index) {
+                    <a
+                      [href]="'#' + item.id"
+                      class="toc-link d-flex align-items-center gap-2 text-decoration-none"
+                    >
+                      <span class="toc-badge bg-orange-dim px-2">{{ i + 1 }}</span>
+                      <span class="toc-text text-light opacity-75">{{ item.title }}</span>
+                    </a>
+                  }
+                </nav>
+              </div>
+
+              <div class="side-card main-border mb-4">
+                <div class="row g-3">
+                  <div class="col-6">
+                    <div class="box-icon">
+                      <i class="fa-regular fa-clock text-orange mb-2"></i>
+                      <p class="mb-0 text-white fw-bold small">{{ Post?.readTime }}</p>
+                      <p class="mb-0 tiny-text">وقت القراءة</p>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="box-icon">
+                      <i class="fa-regular fa-calendar text-orange mb-2"></i>
+                      <p class="mb-0 text-white fw-bold small">{{ Post?.date }}</p>
+                      <p class="mb-0 tiny-text">تاريخ النشر</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="side-card promo-card border-orange-dim">
+                <div class="text-center py-2">
+                  <div class="promo-icon-box mb-3">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <h3 class="h6 text-white fw-bold">لا تفوّت جديدنا</h3>
+                  <p class="small-text mb-4">اشترك للحصول على أحدث المقالات</p>
+                  <a routerLink="/blog" class="btn btn-orange w-100 fw-bold">تصفح المزيد</a>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+    <div
+      class="container related-posts-section mt-5 py-5 border-top border-secondary border-opacity-10"
+    >
+      <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+        <div class="d-flex align-items-center gap-3">
+          <div class="related-icon-box">
+            <i class="fa-solid fa-images"></i>
+          </div>
+          <div>
+            <h2 class="h4 mb-0 text-white fw-bold">مقالات قد تعجبك</h2>
+            <p class="text-secondary small mb-0">استكشف المزيد من المحتوى المميز</p>
+          </div>
+        </div>
+        <a routerLink="/blog" class="all-posts-link d-none d-sm-flex align-items-center gap-2">
+          عرض الكل <i class="fa-solid fa-arrow-left small"></i>
+        </a>
+      </div>
+
+      <div class="row g-4">
+        @for (post of RelatedPosts; track post.id) {
+          <div class="col-md-6 col-lg-4">
+            <a [routerLink]="['/blog', post.slug]" class="related-card-link text-decoration-none">
+              <div class="related-card h-100 rounded-4 overflow-hidden border">
+                <div class="card-img-wrapper">
+                  <img [src]="post.image" [alt]="post.title" class="card-img-top" />
+                  <div class="img-overlay"></div>
+                  <span class="category-tag">{{ post.category }}</span>
+                </div>
+                <div class="card-body p-4">
+                  <h3 class="h6 text-white mb-3 post-title-limit fw-bold">
+                    {{ post.title }}
+                  </h3>
+                  <div
+                    class="d-flex align-items-center justify-content-between small text-secondary"
+                  >
+                    <span class="d-flex align-items-center gap-2">
+                      <img
+                        [src]="post.author.avatar"
+                        class="rounded-circle"
+                        style="width: 24px; height: 24px"
+                      />
+                      {{ post.author.name }}
+                    </span>
+                    <span>{{ post.readTime }}</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        }
+      </div>
+    </div>
+  </article>
+}

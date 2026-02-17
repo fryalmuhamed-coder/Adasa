@@ -1,0 +1,42 @@
+<article class="postcard-card h-100 shadow-sm">
+ 
+    <div class="image-container">
+      <img [src]="Post().image" [alt]="Post().title" class="img-fluid post-img">
+      <div class="category-badge">{{ Post().category }}</div>
+    </div>
+
+    <div class="card-body p-4">
+      
+      <div class="post-meta mb-2">
+        <span class="text-secondary small">
+         <i class="fa-regular fa-clock"></i> {{ Post().readTime }}
+        </span>
+        <span class="mx-2 text-muted">•</span>
+        <span class="text-secondary small">{{ Post().date }}</span>
+      </div>
+
+      <h3 class="post-title h5 fw-bold text-white mb-3">
+        {{ Post().title }}
+      </h3>
+
+      <p class="post-excerpt text-secondary mb-4">
+        {{ Post().excerpt }}
+      </p>
+
+      <div class="d-flex align-items-center justify-content-between pt-3 border-top border-dark">
+        <div class="d-flex align-items-center gap-2">
+          <img [src]="Post().author.avatar" class="author-img" [alt]="Post().author.name">
+          <div>
+            <div class="text-white small fw-bold">{{ Post().author.name }}</div>
+            <div class="text-muted extra-small">{{ Post().author.role }}</div>
+          </div>
+        </div>
+        
+        <div class="arrow-icon">
+<i class="fa-solid fa-chevron-left"></i>
+        </div>
+      </div>
+      <a [routerLink]="['/Post',Post().slug]" class="stretched-link"></a>
+    </div>
+  
+</article>

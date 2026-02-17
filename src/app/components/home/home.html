@@ -1,0 +1,90 @@
+<section
+  class="hero-section position-relative min-vh-100 d-flex align-items-center overflow-hidden bg-dark-deep"
+  dir="rtl"
+>
+  <div class="grid-overlay absolute-inset"></div>
+
+  <div class="blob blob-orange bottom-20 end-10"></div>
+  <div class="blob blob-yellow top-20 start-10"></div>
+  <div class="blob-center"></div>
+
+  <div class="container relative z-3 home-section">
+    <div class="row justify-content-center text-center py-5">
+      <div class="col-lg-10">
+        <!-- Section Label -->
+        <div class="section-label d-inline-flex align-items-center gap-2 mb-4 animate-fade-in">
+          <span class="dot-container">
+            <span class="dot-fade"></span>
+          </span>
+          <span class="dot-container">
+            <span class="dot-ping"></span>
+            <!--   no2ta  ma7tota ta7t  el dot  -->
+            <span class="dot-inner"></span>
+          </span>
+
+          <span class="text-adasa">مرحباً بك في عدسة</span>
+        </div>
+
+        <h1 class="display-3 fw-bold text-white mb-4 text-cus">
+          اكتشف <span class="gradient-text">فن</span><br />التصوير الفوتوغرافي
+        </h1>
+
+        <p class="lead text-light-gray">
+          انغمس في أسرار المحترفين ونصائح عملية لتطوير مهاراتك في التصوير.
+        </p>
+
+        <div class="d-flex flex-column flex-sm-row justify-content-center button-style gap-3">
+          <a
+            class="btn btn-orange btn-lg d-inline-flex align-items-center justify-content-center gap-2 group"
+            routerLink="/blog"
+          >
+            <span>استكشف المقالات</span>
+            <i class="fa-solid fa-arrow-left transition-transform group-hover-move"></i>
+          </a>
+          <a
+            class="btn btn-c btn-lg d-inline-flex align-items-center justify-content-center gap-2"
+            routerLink="/about"
+          >
+            <i class="fa-solid fa-circle-info"></i>
+            <span>اعرف المزيد</span>
+          </a>
+        </div>
+
+        <div class="row g-3 justify-content-center">
+          <div class="col-6 col-md-3">
+            <div class="glass-card-stat p-3">
+              <i class="fa-solid fa-newspaper text-orange fs-4 mb-1"></i>
+              <p class="h2 fw-bold gradient-text mb-0">+50</p>
+              <p class="text-d mb-0">مقالة</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="glass-card-stat p-3">
+              <i class="fa-solid fa-users text-orange fs-4 mb-1"></i>
+              <p class="h2 fw-bold gradient-text mb-0">+10ألف</p>
+              <p class="text-d mb-0">قارئ</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="glass-card-stat p-3">
+              <i class="fa-solid fa-folder-open text-orange fs-4 mb-1"></i>
+              <p class="h2 fw-bold gradient-text mb-0">4</p>
+              <p class="text-d mb-0">تصنيفات</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="glass-card-stat p-3">
+              <i class="fa-solid fa-pen-nib text-orange fs-4 mb-1"></i>
+              <p class="h2 fw-bold gradient-text mb-0">6</p>
+              <p class="text-d mb-0">كاتب</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-featured-articels></app-featured-articels>
+<app-category-section></app-category-section>
+<app-latest-posts></app-latest-posts>
+<app-new-sletter></app-new-sletter>

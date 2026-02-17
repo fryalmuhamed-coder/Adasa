@@ -1,0 +1,84 @@
+<div class="blog-hero-section position-relative py-5   overflow-hidden" dir="rtl">
+  <div class="hero-bg-dark"></div>
+  <div class="hero-grid-overlay"></div>
+  
+  <div class="glow-orange"></div>
+  <div class="glow-yellow"></div>
+
+  <div class="container position-relative text-center z-3   blog-section">
+                <div class="section-label d-inline-flex align-items-center gap-2 mb-4 animate-fade-in">
+             <span class="dot-container">
+            <span class="dot-fade"></span>
+          </span> 
+          <span >
+            <i class="fa-regular fa-newspaper text-adasa"></i>
+          </span>
+         
+          <span class=" text-adasa">  مدونتنا</span>
+        </div>
+
+    <h1 class="display-3  text-pri2 text-white mb-4">
+      استكشف <span class="gradient-text">مقالاتنا</span>
+    </h1>
+    
+    <p class="text-des1  mx-auto mb-5" >
+اكتشف الدروس والرؤى وأفضل الممارسات للتطوير الحديث
+    </p>
+
+  </div>
+</div>
+<app-border></app-border>
+
+
+
+<div class="body-postcard bg-black">
+  <div class="container py-5">
+    
+    <div class="d-flex justify-content-between align-items-center mb-5">
+      <p class="text-neutral-400 mb-0">
+        عرض <span class="fw-bold text-white">{{ totalPostCount }}</span> مقالات
+      </p>
+    </div>
+
+    <div class="row g-4">
+      @for (item of allPosts; track item.id) {
+        <div class="col-md-6 col-lg-4">
+          <app-postcard [Post]="item"></app-postcard>
+        </div>
+      }
+    </div>
+
+    <div class="pagination-wrapper d-flex flex-column align-items-center mt-5 pt-4">
+      <div class="d-flex gap-2 align-items-center">
+        
+        <button class="nav-btn" 
+                (click)="loadPage(currentPage + 1)" 
+                [disabled]="currentPage === totalPages">
+    <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <div class="d-flex gap-1">
+          @for (p of pagesArray; track p) {
+            <button class="page-btn" 
+                    [class.active]="currentPage === p" 
+                    (click)="loadPage(p)">
+              {{ p }}
+            </button>
+          }
+        </div>
+
+        <button class="nav-btn" 
+                (click)="loadPage(currentPage - 1)" 
+                [disabled]="currentPage === 1">
+     <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+      </div>
+      
+      <p class="text-neutral-500 mt-3 small">
+        صفحة {{ currentPage }} من {{ totalPages }}
+      </p>
+    </div>
+
+  </div>
+</div>

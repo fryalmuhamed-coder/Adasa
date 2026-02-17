@@ -1,0 +1,73 @@
+<footer class="footer-section">
+  <div class="glow-orange"></div>
+  <div class="glow-yellow"></div>
+
+  <div class="container-xl py-5">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 text-end">
+      
+      <div class="col">
+        <a routerLink="/" class="footer-logo mb-4 d-flex align-items-center gap-3 text-decoration-none">
+          <div class="logo-icon">ع</div>
+          <span class="logo-text">{{ footerData.name }}</span>
+        </a>
+        <p class="footer-desc">
+          {{ footerData.description }}
+        </p>
+        <div class="social-links d-flex gap-2">
+          <a [href]="footerData.social.twitter" target="_blank" class="social-btn"><i class="fa-brands fa-twitter"></i></a>
+          <a [href]="footerData.social.github" target="_blank" class="social-btn"><i class="fa-brands fa-github"></i></a>
+          <a [href]="footerData.social.linkedin" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin"></i></a>
+          <a [href]="footerData.social.youtube" target="_blank" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="col">
+        <h5 class="column-title"><span></span> استكشف</h5>
+        <ul class="footer-links list-unstyled p-0">
+          <li><a routerLink="/" class="footer-link-item text-pri"><i class="fa-solid fa-chevron-left arrow-icon"></i>الرئيسية</a></li>
+          <li><a routerLink="/blog" class="footer-link-item text-pri"><i class="fa-solid fa-chevron-left arrow-icon"></i>المدونة</a></li>
+          <li><a routerLink="/about" class="footer-link-item text-pri"><i class="fa-solid fa-chevron-left arrow-icon"></i>من نحن</a></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h5 class="column-title"><span></span> التصنيفات</h5>
+        <ul class="footer-links list-unstyled p-0">
+          @for (cat of Categories; track cat.name) {
+            <li>
+              <a [routerLink]="['/blog']" [queryParams]="{category: cat.name}" class="footer-link-item text-pri">
+                <i class="fa-solid fa-chevron-left arrow-icon"></i>{{ cat.name }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="col">
+        <h5 class="column-title"><span></span> ابقى على اطلاع</h5>
+        <p class="footer-desc text-pri mb-4">اشترك للحصول على أحدث المقالات والتحديثات.</p>
+        <form class="newsletter-form w-100">
+          <input type="email" class="form-control mb-3" placeholder="أدخل بريدك الإلكتروني">
+          <button type="submit" class="btn btn-primary-orange w-100">اشترك</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom  mt-5">
+    <div class="container py-4 d-flex flex-column flex-md-row-reverse justify-content-between align-items-center">
+       <p class="mb-0 text-pri">
+  © 2026 عدسة. صنع بكل  <i class="fa-solid text-color fa-heart"></i> جميع الحقوق محفوظة.
+      </p>
+      <div class="footer-bottom-links mb-3 mb-md-0">
+        <a routerLink="/privacy" class="text-pri  ms-4 text-decoration-none footer-link-item-2">
+         سياسة الخصوصية
+        </a>
+        <a routerLink="/terms" class="text-pri ms-4 text-decoration-none footer-link-item-2">
+   شروط الخدمة
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,50 @@
+<section class="categories-section py-5 position-relative">
+   <div class="container py-4">
+    
+    <div class="text-center mb-5">
+             <div class="section-label d-inline-flex align-items-center gap-2 mb-4 animate-fade-in">
+             <span class="dot-container">
+            <span class="dot-fade"></span>
+          </span> 
+           <span class="dot-container">
+             <span class="dot-ping"></span> <!--   no2ta  ma7tota ta7t  el dot  -->
+            <span class="dot-inner"></span>
+          </span>
+         
+          <span class=" text-adasa">  تصنيفات</span>
+        </div>
+      <h2 class="section-title text-white">استكشف حسب الموضوع</h2>
+      <p class="section-subtitle mx-auto">اعثر على محتوى مصمم حسب اهتماماتك</p>
+    </div>
+
+    <div class="row g-4 justify-content-center ">
+      @for (cat of Categorys; track cat.name) {
+        <div class="col-5 col-md-3 col-lg-2-5 "> <a [routerLink]="['/blog']" [queryParams]="{category: cat.name}" class="category-card group">
+            <div class="hover-gradient"></div>
+            
+            <div class="card-content  ">
+
+              <!-- 3ashan  a3ml  daynamic icon  -->
+      <div class="icon-box mb-4">
+  @switch (cat.name) {
+    @case ('إضاءة') { <i class="fa-solid fa-sun"></i> }
+    @case ('بورتريه') { <i class="fa-solid fa-user"></i> }
+    @case ('مناظر طبيعية') { <i class="fa-solid fa-mountain-sun"></i> }
+    @case ('تقنيات') { <i class="fa-solid fa-sliders"></i> }
+    @case ('معدات') { <i class="fa-solid fa-camera"></i> }
+    @default { <i class="fa-solid fa-tag"></i> } }
+</div>
+
+              <h3 class="category-name">{{ cat.name }}</h3>
+              <p class="category-count">{{ cat.count }} مقالة</p>
+
+              <div class="arrow-hint">
+                <i class="fa-solid fa-chevron-left"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+      }
+    </div>
+  </div>
+</section>
