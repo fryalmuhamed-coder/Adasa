@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-// Imports لـ Components والـ Interfaces
 import { Postcard } from '../postcard/postcard';
 import { Border } from '../border/border';
 import { Post, SiteInfo } from '../../blog.interface';
